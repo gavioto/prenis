@@ -1,8 +1,6 @@
 #summary How to use PreNIS
 #labels Featured
 
-= Details =
-
 ==1. Basic Usage==
 
 {{{
@@ -70,8 +68,6 @@ ie: project\myfile.txt which is equivalent
 to %%outpath%%%%filename%%
 }}}
 
-----
-
 *macro.dll* will insert all DLLs for the specified assembly. Ensure all dependant projects are also imported!
 
 {{{
@@ -106,8 +102,6 @@ assembly=assembly name##
 ##macro.end##
 }}}
 
-----
-
 *macro.pdb* will insert all PDB files for the specified assembly. Ensure all dependant projects are also imported!
 
 {{{
@@ -119,8 +113,6 @@ assembly=assembly name##
  %%relfilename%%
 ##macro.end##
 }}}
-
-----
 
 *macro.contentfolders* will iterate through all folders for the specified project.
 You can insert the macro.content macro inside a macro.contentfolders macro to expand out for each content file in each directory. the {{{%%filename%%}}} and {{{%%abspath%%}}} variables will act strange inside the contentfolders macro since they specify folders not files.
@@ -142,8 +134,6 @@ You can insert the macro.content macro inside a macro.contentfolders macro to ex
 ##macro.end##
 }}}
 
-----
-
 *macro.content* will iterate through all files in the project if not used inside a contentfolders macro
 
 {{{
@@ -164,8 +154,6 @@ You can have multiple of the same kind inside a single macro.
 ##exclude;filename=*config*##
 ##include;filename=config*##
 }}}
-
-----
 
 The *version* command will take the version number from the assemblyinfo.cs (assemblyinfo.vb) for the specified assembly. The assembly must be imported first.
 
