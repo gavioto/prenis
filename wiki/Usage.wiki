@@ -5,6 +5,7 @@
 
 ==1. Basic Usage==
 
+{{{
 prenis.exe "-source=c:\my project\installer\install.nsi" -target=c:\output.nsi
 
 -source
@@ -15,6 +16,7 @@ target (output) nsi file
 
 -help
 shows a simple help text
+}}}
 
 To use quotes around a filename, make sure you use quotes around the argument too
 "-source=bah bah" is correct
