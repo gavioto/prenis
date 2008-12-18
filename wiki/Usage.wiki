@@ -1,14 +1,9 @@
 #summary How to use PreNIS
 #labels Featured
 
-= Introduction =
-
-How to use Prenis
-
-
 = Details =
 
-1. Basic Usage
+==1. Basic Usage==
 
 prenis.exe "-source=c:\my project\installer\install.nsi" -target=c:\output.nsi
 
@@ -25,7 +20,7 @@ To use quotes around a filename, make sure you use quotes around the argument to
 "-source=bah bah" is correct
 -source="bah bah" is not correct
 
-2. Script Documentation
+==2. Script Documentation==
 All commands follow the format:
 ##command##
 where they start and end with ## to specify the preprocessor arguments.
