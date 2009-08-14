@@ -52,7 +52,10 @@ Public Class Script
                 If buf.EndsWith(CMD) Then
                     If buf.Length > 2 Then
                         Dim p As Project = ParseImport(buf.Substring(0, buf.Length - 2))
-                        If Not p Is Nothing Then Me.m_projects.AddProject(p)
+                        If Not p Is Nothing Then
+                            Me.m_projects.AddProject(p)
+                            Console.WriteLine("Importing: " & p.GetAssemblyName() & ": " & p.GetProjectFolder())
+                        End If
                     End If
                     buf = ""
                     active = False
@@ -71,11 +74,11 @@ Public Class Script
         If frags.Length < 1 Then Return Nothing
         If frags(0).ToLower().Trim() = "import" Then
             Try
-
                 Dim filename As String = GetArg("project", frags)
                 Dim projectFolder As String = GetArg("folder", frags)
                 Dim configName As String = GetArg("config", frags)
                 Dim studioVersion As String = GetArg("vs", frags)
+                Console.WriteLine("Importing filename: " & filename & "; Folder: " & projectFolder & "; VS Version: " & studioVersion)
                 If projectFolder = "" Then
                     projectFolder = Path.GetDirectoryName(filename)
                 End If
@@ -104,7 +107,7 @@ Public Class Script
                         p = New Project2003(fileContents, projectFolder, configName, Me.m_projects)
                     End If
                 End If
-                Console.WriteLine("Imported " & p.GetAssemblyName() & IIf(p.GetType().ToString.EndsWith("2005"), " Visual Studio 2005 Project", "") & IIf(p.GetType().ToString.EndsWith("2003"), " Visual Studio 2003 Project", ""))
+                Console.WriteLine("Imported " & p.GetType().ToString() & ": " & p.GetAssemblyName())
                 Return p
             Catch ex As Exception
                 SyntaxError("Import error: " & ex.Message)
