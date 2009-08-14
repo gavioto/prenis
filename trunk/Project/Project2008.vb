@@ -46,13 +46,25 @@ Public Class Project2008
     End Function
 
     Public Overrides Function GetAssemblyInfoVersion() As AsmInfoVersion
+        '1.1/2.0 VBProj Structure
         Dim node As XmlElement = Me.m_doc.SelectSingleNode("//Compile[@Include='AssemblyInfo.vb']")
         If Not node Is Nothing Then
             Return New AsmInfoVersion(Path.Combine(Me.GetProjectFolder(), "AssemblyInfo.vb"))
         End If
+        '3.5 VBProj Structure
+        node = Me.m_doc.SelectSingleNode("//Compile[@Include='My Project\AssemblyInfo.vb']")
+        If Not node Is Nothing Then
+            Return New AsmInfoVersion(Path.Combine(Me.GetProjectFolder(), "My Project\AssemblyInfo.vb"))
+        End If
+        '1.1/2.0 CSProj Structure
         node = Me.m_doc.SelectSingleNode("//Compile[@Include='Properties\AssemblyInfo.cs']")
         If Not node Is Nothing Then
             Return New AsmInfoVersion(Path.Combine(Me.GetProjectFolder(), "Properties\AssemblyInfo.cs"))
+        End If
+        '3.5 CSProj structure?
+        node = Me.m_doc.SelectSingleNode("//Compile[@Include='My Project\AssemblyInfo.cs']")
+        If Not node Is Nothing Then
+            Return New AsmInfoVersion(Path.Combine(Me.GetProjectFolder(), "My Project\AssemblyInfo.cs"))
         End If
         Return Nothing  ' #!#!
     End Function

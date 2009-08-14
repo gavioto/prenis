@@ -44,10 +44,14 @@ Public Class Main
         If inputFilename = "" Then
             Console.WriteLine("source file not specified")
             Return
+        Else
+            Console.WriteLine("Input Filename: " & inputFilename)
         End If
         If outputFilename = "" Then
             Console.WriteLine("target file not specified")
             Return
+        Else
+            Console.WriteLine("Output Filename: " & outputFilename)
         End If
 
         'Process command line options
