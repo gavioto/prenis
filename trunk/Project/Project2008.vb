@@ -153,6 +153,13 @@ Public Class Project2008
             Dim relPath As String = nodes(i).Attributes.GetNamedItem("Include").InnerText
             entries.Add(relPath)
         Next
+        'Include non-compilable files for C# projects (e.g. config files)
+        nodes = Me.m_doc.SelectNodes("//None")
+        If nodes Is Nothing Then Return Nothing
+        For i As Integer = 0 To nodes.Count - 1
+            Dim relPath As String = nodes(i).Attributes.GetNamedItem("Include").InnerText
+            entries.Add(relPath)
+        Next
         Return entries.ToArray(GetType(String))
     End Function
 

@@ -6,8 +6,9 @@ Public Class ProjectCollection
     End Sub
 
     Public Sub AddProject(ByVal p As Project)
-        If Not Me._projects.ContainsKey(p.GetProjectGuid()) Then
-            Me._projects.Add(p.GetProjectGuid(), p)
+        Dim key As String = p.GetProjectGuid()
+        If Not Me._projects.ContainsKey(key) Then
+            Me._projects.Add(key, p)
         End If
     End Sub
 
