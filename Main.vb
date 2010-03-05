@@ -61,7 +61,6 @@ Public Class Main
         If strRecursive <> "" Then
             o.UseRecursiveReferencing = [Boolean].Parse(strRecursive)
         End If
-
         Try
             Dim s As New Script(inputFilename, o)
             s.Process(outputFilename)
