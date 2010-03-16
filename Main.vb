@@ -62,6 +62,10 @@ Public Class Main
             o.UseRecursiveReferencing = [Boolean].Parse(strRecursive)
         End If
         Try
+            'Delete the existing pre-processed file, to reduce errors in scripts that use Prenis
+            If File.Exists(outputFilename) Then
+                File.Delete(outputFilename)
+            End If
             Dim s As New Script(inputFilename, o)
             s.Process(outputFilename)
         Catch ex As Exception
