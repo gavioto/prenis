@@ -36,7 +36,7 @@ includeReferences = false;
 
 File /nonfatal "%%absfilename%%" 
 ##
-macro.end
+macro.end 
 ##
 
 
